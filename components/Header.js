@@ -27,16 +27,16 @@ export default function Header() {
     
               {/* <!-- Logo --> */}
               <div className="ml-4 flex lg:ml-0 hover:cursor-pointer">
-                <a href="/">
+                <Link href="/">
                   <span className="sr-only">Workflow</span>
-                  <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="" />
-                </a>
+                  
+                </Link><img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="" />
               </div>
 
               <div className="ml-4 flex lg:ml-0 hover:cursor-pointer">
-              <a href="/">
+              <Link href="/">
                <h1 className='mx-4'>Ecommerce Website</h1>
-               </a>
+               </Link>
               </div>
     
               <div className="ml-auto flex items-center">
@@ -56,10 +56,10 @@ export default function Header() {
                   <a href="#" className="m-4" onClick={logoutUser}>Logout</a>
                   </div>
                   ):(
-                <Link href='/login'>
-                      <div className="lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
-                </div>
+                  <Link href='/login'>
+                    <div className="lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                      <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
+                    </div>
                   </Link>
                   )}
 

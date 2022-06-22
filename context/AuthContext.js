@@ -15,6 +15,7 @@ export const AuthProvider = (props) =>{
     const router = useRouter()
 
     const loginUser = async (email, password) =>{
+
         const response = await fetch(`${API_URL}/api/auth/local`,{
             method: 'POST',
             headers: {
@@ -28,9 +29,10 @@ export const AuthProvider = (props) =>{
         })
 
         const data = await response.json()
-        if(data.data){
-            await setToken(data)
-            setUser({data})
+        if(data.user){
+            await setToken(data.user)
+            setUser(data.user)
+            router.push('/')
         }else{
             router.push('/login')
         }
@@ -46,7 +48,6 @@ export const AuthProvider = (props) =>{
     const checkUserLoggedIn = async() =>{
         try {
             const t = await getToken('jwt')
-            console.log(t)
             
             const {data} = await axios.get(`${API_URL}/api/users/me`, {
                 headers: {

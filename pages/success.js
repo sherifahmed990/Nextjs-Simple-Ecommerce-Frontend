@@ -34,9 +34,7 @@ const useOrder = (session_id) =>{
 export default function Success(){
     const router = useRouter()
     const {session_id} = router.query
-    console.log("Test", session_id)
     const {order, loading} = useOrder(session_id)
-    console.log("Order", order)
     return(
         <div>
             <Head>

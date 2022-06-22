@@ -55,8 +55,7 @@ export default function Account(){
     return(
         <div>
             <Head>
-                <tile>Account Page</tile>
-                <meta name="description" content="The account page, view your order" />
+               
             </Head>
             <div className="bg-white">
                 <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -67,8 +66,8 @@ export default function Account(){
                 <br/><hr/>
                 <h3  className="text-xl my-5 font-medium text-indigo-600 hover:text-indigo-500">Your Orders</h3>
                 {loading && <p>Loading .........</p>}
-                {orders.map(order =>(
-                <div className="my-5 bg-white shadow overflow-hidden sm:rounded-lg" key={order.attributes.product.data.attributes.name}>
+                {orders.map((order, key) =>(
+                <div className="my-5 bg-white shadow overflow-hidden sm:rounded-lg" key={key}>
                     <div className="px-4 py-5 sm:px-6">
                        Product : {order.attributes.product.data.attributes.name}
                    

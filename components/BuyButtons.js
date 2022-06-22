@@ -19,7 +19,6 @@ export default function BuyButton({product}) {
     const handleBuy = async () =>{
         const stripe = await stripePromise
         const token = await getToken()
-        console.log(product)
                 
         const res = await fetch(`${API_URL}/api/orders`,{
             method: 'POST',
