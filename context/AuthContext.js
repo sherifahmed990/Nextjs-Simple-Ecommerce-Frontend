@@ -30,8 +30,9 @@ export const AuthProvider = (props) =>{
 
         const data = await response.json()
         if(data.user){
-            await setToken(data.user)
-            setUser(data.user)
+            await setToken(data)
+            const user = data.user
+            setUser({data:user})
             router.push('/')
         }else{
             router.push('/login')
@@ -49,13 +50,24 @@ export const AuthProvider = (props) =>{
         try {
             const t = await getToken('jwt')
             
+            console.log('Jwt : ',t)
+
             const {data} = await axios.get(`${API_URL}/api/users/me`, {
                 headers: {
                 Authorization:
                     `Bearer ${t}`,
                 },
             })
+            // const res = await fetch(`${API_URL}/api/users/me`,{
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-type': 'application/json',
+            //         'Authorization': `Bearer ${t}`,
+            //     }
+            // })
+            // const data = await res.json()
 
+            console.log('Data : ',data)
             if (!data.username) {
                 console.log('Logged Out')
                 setUser(null)
@@ -80,8 +92,7 @@ export const AuthProvider = (props) =>{
         if(typeof window === 'undefined'){
             return;
         }
-        // Cookies.set('id', data.user.id)
-        // Cookies.set('username', data.user.username)
+        
         Cookies.set('jwt', data.jwt, { expires: 7 })
 
         if(Cookies.get('jwt')){
